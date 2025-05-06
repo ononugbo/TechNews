@@ -1,0 +1,401 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Spotify Clone
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Roboto&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+    }
+    /* Scrollbar for playlist */
+    .playlist-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .playlist-scroll::-webkit-scrollbar-thumb {
+      background-color: #1db954;
+      border-radius: 3px;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col">
+  <!-- Main container -->
+  <div class="flex flex-1 overflow-hidden">
+   <!-- Sidebar -->
+   <aside class="w-64 bg-gray-900 flex flex-col border-r border-gray-800">
+    <div class="px-6 py-8 flex items-center space-x-3 border-b border-gray-800">
+     <img alt="Spotify logo letter S in green circle" class="w-8 h-8" height="32" src="https://storage.googleapis.com/a1aa/image/d1ece4b9-f742-4f28-f53d-c700b2f9ef25.jpg" width="32"/>
+     <h1 class="text-2xl font-bold text-green-500 tracking-wide">
+      Spotify
+     </h1>
+    </div>
+    <nav class="flex-1 px-6 py-6 overflow-y-auto">
+     <ul class="space-y-4 text-sm font-semibold">
+      <li>
+       <a class="flex items-center space-x-4 text-green-500" href="#">
+        <i class="fas fa-home fa-lg">
+        </i>
+        <span>
+         Home
+        </span>
+       </a>
+      </li>
+      <li>
+       <a class="flex items-center space-x-4 hover:text-green-500 transition-colors" href="#">
+        <i class="fas fa-search fa-lg">
+        </i>
+        <span>
+         Search
+        </span>
+       </a>
+      </li>
+      <li>
+       <a class="flex items-center space-x-4 hover:text-green-500 transition-colors" href="#">
+        <i class="fas fa-book-open fa-lg">
+        </i>
+        <span>
+         Your Library
+        </span>
+       </a>
+      </li>
+     </ul>
+     <div class="mt-8 border-t border-gray-800 pt-6">
+      <h2 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">
+       Playlists
+      </h2>
+      <ul class="space-y-3 max-h-64 overflow-y-auto playlist-scroll">
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         My Favorite Songs
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Chill Vibes
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Workout Mix
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Top Hits 2024
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Indie Essentials
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Jazz Classics
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Party Time
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Relax &amp; Unwind
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Road Trip
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Throwback 90s
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Acoustic Mornings
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Hip Hop Beats
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Classical Focus
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         Summer Hits
+        </a>
+       </li>
+       <li>
+        <a class="block hover:text-green-500 transition-colors truncate" href="#">
+         New Releases
+        </a>
+       </li>
+      </ul>
+     </div>
+    </nav>
+    <div class="px-6 py-4 border-t border-gray-800">
+     <button class="w-full bg-green-500 hover:bg-green-600 text-gray-900 font-bold py-2 rounded-md transition-colors" type="button">
+      Upgrade to Premium
+     </button>
+    </div>
+   </aside>
+   <!-- Main content -->
+   <main class="flex-1 flex flex-col overflow-hidden">
+    <!-- Top bar -->
+    <header class="flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-gray-850">
+     <div class="flex items-center space-x-4">
+      <button aria-label="Go back" class="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+       <i class="fas fa-chevron-left text-gray-300">
+       </i>
+      </button>
+      <button aria-label="Go forward" class="p-2 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+       <i class="fas fa-chevron-right text-gray-300">
+       </i>
+      </button>
+     </div>
+     <div class="flex items-center space-x-4">
+      <button aria-label="Upgrade" class="hidden md:inline-block text-green-500 font-semibold hover:underline">
+       Upgrade
+      </button>
+      <button aria-label="User profile" class="flex items-center space-x-2 bg-gray-800 rounded-full px-3 py-1 hover:bg-gray-700 transition-colors">
+       <img alt="User profile avatar with letter U on green background" class="w-8 h-8 rounded-full" height="32" src="https://storage.googleapis.com/a1aa/image/4a4691ed-d722-4e1e-f48a-5edb835b3492.jpg" width="32"/>
+       <span class="text-sm font-semibold">
+        User123
+       </span>
+       <i class="fas fa-chevron-down text-gray-400">
+       </i>
+      </button>
+     </div>
+    </header>
+    <!-- Content scroll area -->
+    <section class="flex-1 overflow-y-auto px-6 py-6 space-y-8">
+     <!-- Featured playlists -->
+     <div>
+      <h2 class="text-2xl font-bold mb-4">
+       Good Afternoon
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+       <a class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Album cover with abstract colorful shapes and text Album 1" class="w-16 h-16 rounded" height="64" src="https://storage.googleapis.com/a1aa/image/4aa704d9-6b50-4783-e84c-7cda37e26bb3.jpg" width="64"/>
+        <div class="text-white font-semibold truncate">
+         Daily Mix 1
+        </div>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Album cover with a photo of a person playing guitar in sunset with text Album 2" class="w-16 h-16 rounded" height="64" src="https://storage.googleapis.com/a1aa/image/cfde38a5-fd61-4b58-5abc-0f5e2de1bae6.jpg" width="64"/>
+        <div class="text-white font-semibold truncate">
+         Daily Mix 2
+        </div>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Album cover with colorful geometric shapes and text Album 3" class="w-16 h-16 rounded" height="64" src="https://storage.googleapis.com/a1aa/image/7608b12b-47c1-452b-5db3-757509bf8711.jpg" width="64"/>
+        <div class="text-white font-semibold truncate">
+         Daily Mix 3
+        </div>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Album cover with a photo of a DJ mixing music with text Album 4" class="w-16 h-16 rounded" height="64" src="https://storage.googleapis.com/a1aa/image/593e25a4-7d5b-4048-55ee-7aca35fb8365.jpg" width="64"/>
+        <div class="text-white font-semibold truncate">
+         Daily Mix 4
+        </div>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 flex items-center space-x-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Album cover with abstract blue and purple waves and text Album 5" class="w-16 h-16 rounded" height="64" src="https://storage.googleapis.com/a1aa/image/a0c52151-945d-4985-7631-1649a96660ff.jpg" width="64"/>
+        <div class="text-white font-semibold truncate">
+         Daily Mix 5
+        </div>
+       </a>
+      </div>
+     </div>
+     <!-- Made for you -->
+     <div>
+      <h2 class="text-2xl font-bold mb-4">
+       Made For You
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Discover Weekly playlist cover with abstract green and black shapes" class="w-full rounded mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/315c0db9-4ee6-4892-4244-aaaab02d858e.jpg" width="200"/>
+        <h3 class="text-white font-semibold truncate">
+         Discover Weekly
+        </h3>
+        <p class="text-gray-400 text-sm truncate">
+         Your weekly mixtape of fresh music
+        </p>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Release Radar playlist cover with colorful radar waves on black background" class="w-full rounded mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/ac3432cb-0d33-4b63-84e6-9ea9b783dd0f.jpg" width="200"/>
+        <h3 class="text-white font-semibold truncate">
+         Release Radar
+        </h3>
+        <p class="text-gray-400 text-sm truncate">
+         New releases from artists you follow
+        </p>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Daily Mix 1 playlist cover with photo of a person playing guitar in sunset" class="w-full rounded mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/849a810a-835f-4820-26bf-808a3b1d7556.jpg" width="200"/>
+        <h3 class="text-white font-semibold truncate">
+         Daily Mix 1
+        </h3>
+        <p class="text-gray-400 text-sm truncate">
+         A mix of your favorite songs
+        </p>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Chill Hits playlist cover with pastel colors and relaxing vibe" class="w-full rounded mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/16963c2f-079d-45e9-6d87-7a1fd6d12818.jpg" width="200"/>
+        <h3 class="text-white font-semibold truncate">
+         Chill Hits
+        </h3>
+        <p class="text-gray-400 text-sm truncate">
+         Kick back and relax with these tunes
+        </p>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Top Hits playlist cover with bright neon lights and text Top Hits" class="w-full rounded mb-3" height="200" src="https://storage.googleapis.com/a1aa/image/03c6947a-25a2-4c18-1c68-d33f59ab03f6.jpg" width="200"/>
+        <h3 class="text-white font-semibold truncate">
+         Top Hits
+        </h3>
+        <p class="text-gray-400 text-sm truncate">
+         The biggest songs right now
+        </p>
+       </a>
+      </div>
+     </div>
+     <!-- Popular playlists -->
+     <div>
+      <h2 class="text-2xl font-bold mb-4">
+       Popular Playlists
+      </h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Hip Hop Hits playlist cover with graffiti style art and text Hip Hop Hits" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/7247f6e9-dc1e-4322-e864-f273bd2b8a97.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Hip Hop Hits
+        </h3>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Rock Classics playlist cover with electric guitar and flames" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/e59c2e87-a4a3-4f0d-d213-2cbe11cc32b5.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Rock Classics
+        </h3>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Pop Rising playlist cover with colorful abstract shapes and text Pop Rising" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/5cc0325d-5736-4301-e71f-b0f33de8d709.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Pop Rising
+        </h3>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Jazz Vibes playlist cover with saxophone silhouette and warm colors" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/126e79ee-b13b-42ed-7a7a-110d06ef9334.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Jazz Vibes
+        </h3>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Country Roads playlist cover with country road and sunset" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/e999cef3-03f3-4186-1008-a344db569881.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Country Roads
+        </h3>
+       </a>
+       <a class="bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-colors" href="#">
+        <img alt="Electronic Dance playlist cover with neon lights and DJ silhouette" class="w-full rounded mb-3" height="150" src="https://storage.googleapis.com/a1aa/image/4788cc0a-ed47-472c-a392-667011bf0545.jpg" width="150"/>
+        <h3 class="text-white font-semibold truncate">
+         Electronic Dance
+        </h3>
+       </a>
+      </div>
+     </div>
+    </section>
+    <!-- Player bar -->
+    <footer class="bg-gray-800 border-t border-gray-700 px-6 py-3 flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0">
+     <div class="flex items-center space-x-4 w-full md:w-1/3">
+      <img alt="Currently playing song cover with abstract colorful shapes" class="w-14 h-14 rounded" height="56" src="https://storage.googleapis.com/a1aa/image/7f80d5f8-c275-4d51-d6c5-ab5c9f1acae0.jpg" width="56"/>
+      <div class="flex flex-col truncate">
+       <span class="text-white font-semibold truncate">
+        Blinding Lights
+       </span>
+       <span class="text-gray-400 text-sm truncate">
+        The Weeknd
+       </span>
+      </div>
+      <button aria-label="Like song" class="text-gray-400 hover:text-green-500 transition-colors">
+       <i class="fas fa-heart">
+       </i>
+      </button>
+     </div>
+     <div class="flex flex-col items-center w-full md:w-1/3">
+      <div class="flex items-center space-x-6 mb-1">
+       <button aria-label="Shuffle" class="text-gray-400 hover:text-green-500 transition-colors">
+        <i class="fas fa-random">
+        </i>
+       </button>
+       <button aria-label="Previous" class="text-gray-400 hover:text-green-500 transition-colors">
+        <i class="fas fa-step-backward">
+        </i>
+       </button>
+       <button aria-label="Play/Pause" class="bg-white text-gray-900 rounded-full p-3 hover:scale-110 transition-transform">
+        <i class="fas fa-play">
+        </i>
+       </button>
+       <button aria-label="Next" class="text-gray-400 hover:text-green-500 transition-colors">
+        <i class="fas fa-step-forward">
+        </i>
+       </button>
+       <button aria-label="Repeat" class="text-gray-400 hover:text-green-500 transition-colors">
+        <i class="fas fa-redo">
+        </i>
+       </button>
+      </div>
+      <div class="flex items-center space-x-2 w-full max-w-md text-xs text-gray-400">
+       <span>
+        1:15
+       </span>
+       <input class="w-full h-1 rounded-lg bg-gray-600 accent-green-500 cursor-pointer" max="100" min="0" type="range" value="30"/>
+       <span>
+        3:45
+       </span>
+      </div>
+     </div>
+     <div class="hidden md:flex items-center space-x-4 w-1/3 justify-end text-gray-400">
+      <button aria-label="Lyrics" class="hover:text-green-500 transition-colors">
+       <i class="fas fa-align-left">
+       </i>
+      </button>
+      <button aria-label="Queue" class="hover:text-green-500 transition-colors">
+       <i class="fas fa-list">
+       </i>
+      </button>
+      <button aria-label="Devices" class="hover:text-green-500 transition-colors">
+       <i class="fas fa-laptop">
+       </i>
+      </button>
+      <div class="flex items-center space-x-2 w-24">
+       <i class="fas fa-volume-down">
+       </i>
+       <input class="w-full h-1 rounded-lg bg-gray-600 accent-green-500 cursor-pointer" max="100" min="0" type="range" value="70"/>
+       <i class="fas fa-volume-up">
+       </i>
+      </div>
+      <button aria-label="Fullscreen" class="hover:text-green-500 transition-colors">
+       <i class="fas fa-expand">
+       </i>
+      </button>
+     </div>
+    </footer>
+   </main>
+  </div>
+ </body>
+</html>
